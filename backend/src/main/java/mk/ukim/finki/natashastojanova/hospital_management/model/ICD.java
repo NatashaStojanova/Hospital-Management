@@ -1,5 +1,6 @@
 package mk.ukim.finki.natashastojanova.hospital_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,10 @@ public class ICD {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private int code;
+    private Long code;
     private String name;
 
     @OneToMany(mappedBy = "icd")
+    @JsonIgnore
     private List<CheckUp_ICD> checkUp_icdList;
 }
