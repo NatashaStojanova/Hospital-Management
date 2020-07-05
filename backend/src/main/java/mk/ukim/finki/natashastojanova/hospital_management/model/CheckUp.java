@@ -1,5 +1,6 @@
 package mk.ukim.finki.natashastojanova.hospital_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,18 +29,23 @@ public class CheckUp {
     private Date date;
 
     @ManyToOne
+    @JsonIgnore
     private Patient patient;
 
     @ManyToOne
+    @JsonIgnore
     private Doctor doctor;
 
     @OneToMany(mappedBy = "checkUp")
+    @JsonIgnore
     private List<CheckUp_ICD> checkUp_icdList;
 
     @OneToMany(mappedBy = "givenReferral")
+    @JsonIgnore
     private List<Referral> referralList;
 
     @ManyToOne
     @JoinColumn(name = "referral_id")
+    @JsonIgnore
     private Referral realizedReferral;
 }

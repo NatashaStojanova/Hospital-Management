@@ -1,5 +1,6 @@
 package mk.ukim.finki.natashastojanova.hospital_management.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,10 @@ public class CheckUp_ICD {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private CheckUp checkUp;
 
     @ManyToOne
+    @JsonIgnore
     private ICD icd;
 }
