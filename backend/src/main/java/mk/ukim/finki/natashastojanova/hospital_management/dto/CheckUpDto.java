@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 /**
  * @author Natasha Stojanova
  */
@@ -16,7 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class CheckUpDto {
     String description;
-    Date date;
     Long doctorSSN;
     Long patientSSN;
 

@@ -85,9 +85,9 @@ public class MainController {
     }
 
     //avg
-    @RequestMapping(value = "/avgPatientsPerDoctor", method = RequestMethod.POST)
-    Float avgPatientsPerDoctor(@RequestBody AvgPatientsDoctor_Dto avgPatientsDoctor_dto) {
-        return doctorService.avgPatientsPerDoctor(avgPatientsDoctor_dto.getSsn(), avgPatientsDoctor_dto.getFromDate(), avgPatientsDoctor_dto.getToDate());
+    @RequestMapping(value = "/monthly-report", method = RequestMethod.POST)
+    Float monthlyReport(@RequestBody AvgPatientsDoctor_Dto avgPatientsDoctor_dto) {
+        return doctorService.monthlyReport(avgPatientsDoctor_dto.getSsn(), avgPatientsDoctor_dto.getFromDate(), avgPatientsDoctor_dto.getToDate());
     }
 
 }

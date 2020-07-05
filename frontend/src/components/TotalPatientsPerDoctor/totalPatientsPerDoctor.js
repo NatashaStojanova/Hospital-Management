@@ -15,6 +15,7 @@ class AvgPatientsPerHospital extends Component {
 
         this.state = {
             obj: obj,
+            total: null,
         }
     }
 
@@ -33,24 +34,27 @@ class AvgPatientsPerHospital extends Component {
      }
 
     addData = () => {
-        alert(this.state.obj.ssn);
-        alert(this.state.obj.fromDate);
-        alert(this.state.obj.toDate);
+        CrudService.monthlyReport(this.state.obj).then(resp => {
+            this.setState(prevState => {
+                let total = this.state.total;
+                total = resp.data;
+                return {
+                    total: total,
+                }
+            }, () => {
 
-
-        CrudService.avgPatientsPerDoctor(this.state.obj).then(resp => {
-            document.getElementById("resp").style.border = "thin solid #d3d3d3";
-            document.getElementById("resp").style.display = "inline";
-            document.getElementById("resp").innerHTML = resp.data;
+                document.getElementById("resp").style.display = "inline";
+            })
         })
     }
 
     render() {
         return (
             <div className="container">
-                <br/><br/>
+                <br/>
                 <div>
-                    <h4></h4>
+                    <h2>Find total number of Check Ups for a specific doctor</h2>
+                    <br/>
                     <div className="form-group row">
                         <label htmlFor="location" className="col-sm-4 offset-sm-1 text-left">Doctor SSN</label>
                         <div className="col-sm-6">
@@ -77,6 +81,13 @@ class AvgPatientsPerHospital extends Component {
                     </div>
                     <div className="form-group row">
                         <div
+                            className="offset-sm-1 col-sm-3  text-right">
+                            <Link to={"/"}
+                                  className="btn btn-danger text-upper">
+                                Cancel
+                            </Link>
+                        </div>
+                        <div
                             className="offset-sm-1 col-sm-3  text-center">
                             <button
                                 type="submit"
@@ -85,29 +96,12 @@ class AvgPatientsPerHospital extends Component {
                                 Search
                             </button>
                         </div>
-                        <div
-                            className="offset-sm-1 col-sm-3  text-center">
-                            <button
-                                type="reset"
-                                className="btn btn-warning text-upper">
-                                Reset
-                            </button>
-                        </div>
-                        <div
-                            className="offset-sm-1 col-sm-3  text-center">
-                            <Link to={"/"}
-                                  className="btn btn-danger text-upper">
-                                Cancel
-                            </Link>
-                        </div>
                     </div>
                     <div className="form-group">
-                            <textarea
-                                style={{display: "none"}}
+                            <div style={{display: "none"}}
                                 className="form-control"
                                 id="resp"
-                                rows="10"
-                            />
+                            ><h1>Total number of Check Ups from {this.state.obj.fromDate} to {this.state.obj.toDate} is {this.state.total}</h1></div>
                     </div>
                 </div>
             </div>

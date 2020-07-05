@@ -9,8 +9,6 @@ import mk.ukim.finki.natashastojanova.hospital_management.service.ICDService;
 import mk.ukim.finki.natashastojanova.hospital_management.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 /**
  * @author Natasha Stojanova
  */
@@ -49,9 +47,7 @@ public class CrudController {
     //create new check up
     @RequestMapping(value = "/create-new-check-up", method = RequestMethod.POST)
     public Integer createNewCheckUp(@RequestBody CheckUpDto checkUpDto) {
-        Date date = new Date();
-        checkUpDto.setDate(date);
-        return doctorService.addNewCheckUp(checkUpDto.getDescription(), checkUpDto.getDate(), checkUpDto.getPatientSSN(), checkUpDto.getDoctorSSN());
+        return doctorService.addNewCheckUp(checkUpDto.getDescription(), checkUpDto.getPatientSSN(), checkUpDto.getDoctorSSN());
     }
 
     //create new check up icd

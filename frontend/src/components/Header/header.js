@@ -11,7 +11,6 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
 } from 'reactstrap';
 
 const Header = (props) => {
@@ -38,18 +37,15 @@ const Header = (props) => {
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem href="/groupByCode/">
-                                    Top 5 Diagnosed Codes of 2019
+                                    Frequency of diagnosed ICD codes of 2019
                                 </DropdownItem>
                                 <DropdownItem href="/groupByLocation/">
                                     Number of hospitals per Base Hospital
                                 </DropdownItem>
-                                <DropdownItem href="/avgPatientsPerDoctor/">
-                                    Average Patients per Doctor
+                                <DropdownItem href="/monthly-report-doctor">
+                                    Monthly Report per Doctor
                                 </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
-                                </DropdownItem>
+                                
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>

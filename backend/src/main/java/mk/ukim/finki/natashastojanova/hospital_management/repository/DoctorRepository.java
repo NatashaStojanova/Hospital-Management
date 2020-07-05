@@ -39,8 +39,8 @@ public interface DoctorRepository extends JpaSpecificationRepository<Doctor> {
     @Query(value = "SELECT i.code AS code, count(i.code) AS total FROM ICD i JOIN CheckUp_ICD cu ON i.id = cu.icd.id JOIN CheckUp c ON c.id = cu.checkUp.id WHERE c.date >= '2019-01-01' AND c.date <= '2019-12-31' GROUP BY i.code")
     Collection<ICD_Dto> groupByCode();
 
-    @Query(value = "INSERT INTO check_up (id,description,date,patient_id,doctor_id) VALUES ((SELECT nextval('main_sequence') AS id),:description, :date, (SELECT id FROM patient where ssn = :patientSSN), (SELECT DISTINCT id FROM doctor where ssn = :doctorSSN)) RETURNING *", nativeQuery = true)
-    Integer addNewCheckUp(@Param("description") String description, @Param("date") Date date, @Param("patientSSN") Long patientSSN, @Param("doctorSSN") Long doctorSSN);
+    @Query(value = "SELECT checkupfunction(:doctorSSN, :patientSSN, :description)", nativeQuery = true)
+    Integer addNewCheckUp(@Param("description") String description, @Param("patientSSN") Long patientSSN, @Param("doctorSSN") Long doctorSSN);
 
     @Query(value = "INSERT INTO check_up_icd(id,icd_id,check_up_id) VALUES ((SELECT nextval('main_sequence') AS id), :icdId, :checkUpId) RETURNING *", nativeQuery = true)
     Integer addNewCheckUpICD(@Param("checkUpId") int checkUpId, @Param("icdId") int icdId);
@@ -48,6 +48,6 @@ public interface DoctorRepository extends JpaSpecificationRepository<Doctor> {
     @Query(value = "INSERT INTO patient(id,ssn,name,surname,address,age,id_doctor) VALUES ((SELECT nextval('main_sequence') AS id), :ssn, :name, :surname, :address, :age, :id_doctor) RETURNING *", nativeQuery = true)
     Integer addNewPatient(@Param("ssn") int ssn, @Param("name") String name, @Param("surname") String surname, @Param("address") String address, @Param("age") int age, @Param("id_doctor") int id_doctor);
 
-    @Query(value = "SELECT avgpatientsperdoctorfunction((SELECT DISTINCT id FROM doctor WHERE ssn = :ssn), :fromDate, :toDate)", nativeQuery = true)
-    Float avgPatientsPerDoctor(@Param("ssn") int ssn, @Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
+    @Query(value = "SELECT monthlyreport((SELECT DISTINCT id FROM doctor WHERE ssn = :ssn), :fromDate, :toDate)", nativeQuery = true)
+    Float monthlyReport(@Param("ssn") int ssn, @Param("fromDate") Date fromDate, @Param("toDate") Date toDate);
 }

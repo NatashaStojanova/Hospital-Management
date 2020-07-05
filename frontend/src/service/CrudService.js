@@ -104,8 +104,8 @@ const CrudService = {
     saveDoctor: (doctor) => {
         return axios.post("/new-doctor", doctor);
     },
-    avgPatientsPerDoctor: (obj) => {
-       return axios.post("/avgPatientsPerDoctor", obj);
+    monthlyReport: (obj) => {
+       return axios.post("/monthly-report", obj);
      },
 };
 

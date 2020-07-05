@@ -29,7 +29,7 @@ public interface DoctorService {
 
     public Collection<ICD_Dto> groupByCode();
 
-    public Integer addNewCheckUp(String description, Date date, Long patientSSN, Long doctorSSN);
+    public Integer addNewCheckUp(String description, Long patientSSN, Long doctorSSN);
 
     public Integer addNewCheckUpICD(int checkUpId, int icdId);
 
@@ -37,5 +37,5 @@ public interface DoctorService {
 
     Integer addNewPatient(int ssn, String name, String surname, String address, int age, int id_doctor);
 
-    Float avgPatientsPerDoctor(int ssn, Date fromDate, Date toDate);
+    Float monthlyReport(int ssn, Date fromDate, Date toDate);
 }

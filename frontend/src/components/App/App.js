@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import {Container, Switch} from "react-bootstrap";
 import HomePage from "../HomePage/homePage";
 import BaseHospital from "../BaseHospital/baseHospital";
 import Hospital from "../Hospital/hospital";
@@ -17,7 +16,7 @@ import Codes from "../Statistics/Codes/codes";
 import HospitalLocation from "../Statistics/HospitalLocation/hospitalLocation";
 import AddNewPatient from "../Doctor/AddNewPatient/addNewPatient"
 import MedicalSpecialist from "../Hospital/MedicalSpecialist/medicalSpecialist";
-import AvgPatientsPerDoctor from "../AvgPatientsPerDoctor/avgPatientsPerDoctor"
+import TotalPatientsPerDoctor from "../TotalPatientsPerDoctor/totalPatientsPerDoctor"
 
 class App extends Component {
 
@@ -49,7 +48,7 @@ class App extends Component {
                     <Route path={"/groupByCode"} exact component={Codes}/>
                     <Route path={"/groupByLocation"} exact component={HospitalLocation}/>
                     <Route path={"/doctor/:doctorId/new-patient/"} exact component={AddNewPatient}/>
-                    <Route path={"/avgPatientsPerDoctor"} exact component={AvgPatientsPerDoctor}/>
+                    <Route path={"/monthly-report-doctor"} exact component={TotalPatientsPerDoctor}/>
                     <Footer/>
                 </Router>
             </div>

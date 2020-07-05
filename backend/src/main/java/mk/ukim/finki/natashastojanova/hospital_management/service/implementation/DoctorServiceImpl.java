@@ -61,8 +61,8 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.groupByCode();
     }
 
-    public Integer addNewCheckUp(String description, Date date, Long patientSSN, Long doctorSSN) {
-        return doctorRepository.addNewCheckUp(description, date, patientSSN, doctorSSN);
+    public Integer addNewCheckUp(String description, Long patientSSN, Long doctorSSN) {
+        return doctorRepository.addNewCheckUp(description, patientSSN, doctorSSN);
     }
 
     public Integer addNewCheckUpICD(int checkUpId, int icdId) {
@@ -78,7 +78,7 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.addNewPatient(ssn, name, surname, address, age, id_doctor);
     }
 
-    public Float avgPatientsPerDoctor(int ssn, Date fromDate, Date toDate) {
-        return doctorRepository.avgPatientsPerDoctor(ssn, fromDate, toDate);
+    public Float monthlyReport(int ssn, Date fromDate, Date toDate) {
+        return doctorRepository.monthlyReport(ssn, fromDate, toDate);
     }
 }
