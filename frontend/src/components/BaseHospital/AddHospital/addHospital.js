@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput} from 'mdbreact';
 import CrudService from "../../../service/CrudService";
 
 class AddHospital extends Component {
@@ -34,8 +33,6 @@ class AddHospital extends Component {
     }
 
     addData = () => {
-        alert(this.state.baseHospitalId)
-        alert(this.state.hospital.location)
         CrudService.saveHospital(this.state.hospital, this.state.baseHospitalId).then(resp => {
             this.props.history.push("/base-hospital/"+this.state.baseHospitalId)
         })

@@ -1,8 +1,6 @@
 import React, {Component} from "react";
-import axios from "../../axios/axios";
 import CrudService from "../../service/CrudService";
 import {Link} from "react-router-dom";
-import {Container} from "react-bootstrap";
 
 /**
  * @author Konstatnin Bogdanoski (konstantin.bogdanoski@inteligenta.io)
@@ -36,7 +34,7 @@ class BaseHospital extends Component {
             <div>
                 {this.state.hospitals.length > 0 ?
             <div>
-                <h1>Hospitals of Base Hospital with ID: {this.state.baseHospitalId}</h1>
+                <h1>Hospital Locations:</h1>
                 <table className="table tr-history table-striped small">
                     <thead>
                     <tr>

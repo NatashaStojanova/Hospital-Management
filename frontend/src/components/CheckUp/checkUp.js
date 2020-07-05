@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput} from 'mdbreact';
 import CrudService from "../../service/CrudService";
 import axios from "../../axios/axios"
 
@@ -74,10 +73,6 @@ class CheckUp extends Component {
     }
 
     addData = () => {
-        alert(this.state.codeId)
-        alert(this.state.checkUp.patientSSN);
-        alert(this.state.checkUp.doctorSSN);
-        alert(this.state.checkUp.description);
         CrudService.createCheckUp(this.state.checkUp).then(resp => {
             this.setState(prevState => {
                 let checkUpICD = this.state.checkUpICD;

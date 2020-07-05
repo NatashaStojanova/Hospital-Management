@@ -1,5 +1,5 @@
 /**
- * @author Natasha Stojanvoa (natashastojanova6@gmail.com)
+ * @author Natasha Stojanova (natashastojanova6@gmail.com)
  */
 import React from 'react';
 import CanvasJSReact from "../../../assets/canvasjs-2.3.2/canvasjs.react";
@@ -18,7 +18,7 @@ const HospitalLocation = (props) => {
 
     let options = {};
 
-    if (locations != undefined) {
+    if (locations !== undefined) {
         let tmp = locations.map((location) => {
             return {label: location.name, y: location.total}
         });
@@ -26,7 +26,7 @@ const HospitalLocation = (props) => {
 
         options = {
             title: {
-                text: "Codes"
+                text: "Ranking by number of hospitals"
             },
             data: [{
                 type: "column",
@@ -39,6 +39,7 @@ const HospitalLocation = (props) => {
 
     return (
         <div>
+            <br/>
             {locations !== undefined ?
                 <CanvasJSReact.CanvasJSChart options={options}/>
                 : <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh'}}

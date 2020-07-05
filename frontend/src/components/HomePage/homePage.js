@@ -26,15 +26,6 @@ class HomePage extends Component {
             .catch(error => {
                 alert(error)
             })
-        //let baseHospitals = [];
-        /*for (let i = 0; i < 20; i++) {
-            let baseHospital = {id: i, name: "BaseHospital_" + i, description: "Description_" + i}
-            baseHospitals.push(baseHospital);
-        }*/
-
-       /* this.setState({
-            baseHospitals: baseHospitals
-        })*/
     }
 
     render() {

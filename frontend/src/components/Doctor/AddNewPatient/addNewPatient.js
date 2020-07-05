@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput} from 'mdbreact';
 import CrudService from "../../../service/CrudService";
 
 class AddNewPatient extends Component {

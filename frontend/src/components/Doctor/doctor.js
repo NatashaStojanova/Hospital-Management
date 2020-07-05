@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import CrudService from "../../service/CrudService";
-import axios from "../../axios/axios";
 import {Link} from "react-router-dom";
 
 /**
@@ -38,7 +37,7 @@ class Doctor extends Component {
                 {this.state.patients.length > 0 ?
             <div>
                 <div>
-                     <h1>Patients of Doctor with ID: {this.state.doctorId}</h1>
+                     <h1>Patients</h1>
                     <Link to={"/doctor/" + this.state.doctorId + "/new-patient/"}
                           className="btn btn-primary"
                           doctorId={this.state.doctorId}>

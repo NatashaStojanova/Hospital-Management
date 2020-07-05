@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import axios from "../../axios/axios";
 import CrudService from "../../service/CrudService";
 import {Link} from "react-router-dom";
 
@@ -37,7 +36,7 @@ class Hospital extends Component {
                 {this.state.doctors.length > 0 ?
             <div>
                 <div>
-                <h1>General Practitioners for hospital with ID: {this.state.hospitalId}</h1>
+                <h1>General Practitioners</h1>
                     <div align = "left" style={{marginLeft: "20px"}}>
                         <Link to={"/base-hospital/" + this.state.baseHospitalId +
                         "/hospital/" + this.state.hospitalId + "/medical-specialists"}
@@ -45,8 +44,7 @@ class Hospital extends Component {
                               baseHospitalId={this.state.baseHospitalId}
                               hospitalId={this.state.hospitalId}
                         >Switch to Medical Specialists</Link>
-                    </div>
-               <Link to={"/"} className="btn btn-primary">Add new Doctor</Link></div>
+                    </div></div>
                 <br/>
                 <table className="table tr-history table-striped small">
                     <thead>

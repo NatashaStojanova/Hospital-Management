@@ -1,8 +1,5 @@
 import React, {Component} from "react";
-import axios from "../../axios/axios";
 import CrudService from "../../service/CrudService";
-import {Link} from "react-router-dom";
-import {Container} from "react-bootstrap";
 
 /**
  * @author Natasha Stojanova (natashastojanova6@gmail.com)
@@ -32,16 +29,6 @@ class Patient extends Component {
                 console.error(error);
                 alert(error);
             });
-
-       /* let diagnoses = [];
-        for (let i = 0; i < 10; i++) {
-            let diagnose = {id: i, code: i * 10000, name: "Diagnose_Name_" + i}
-            diagnoses.push(diagnose);
-        }
-
-        this.setState({
-            diagnoses: diagnoses
-        })*/
     }
 
     render() {
@@ -49,7 +36,7 @@ class Patient extends Component {
             <div>
                 {this.state.diagnoses.length > 0 ?
             <div>
-                <h1>Diagnoses of Patient with ID: {this.state.patientId}</h1>
+                <h1>Diagnoses of Patient</h1>
                 <table className="table tr-history table-striped small">
                     <thead>
                     <tr>
