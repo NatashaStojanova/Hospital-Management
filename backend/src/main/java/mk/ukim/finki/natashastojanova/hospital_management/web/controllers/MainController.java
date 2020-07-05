@@ -76,9 +76,6 @@ public class MainController {
         return icdService.getAllICDCodes();
     }
 
-    //@RequestMapping(value = "/get-departments", method = RequestMethod.GET)
-    //List<Department> getAllDepartment(){ return departmentService.getAllDepartments();}
-
     @RequestMapping(value = "/groupByLocation", method = RequestMethod.GET)
     Collection<Hospital_Location_Dto> groupByHospitalLocation() {
         return baseHospitalService.groupByLocation();
