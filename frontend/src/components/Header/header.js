@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
     Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle,
     Nav,
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
     NavItem,
     NavLink,
     UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
 } from 'reactstrap';
 
 const Header = (props) => {
@@ -45,7 +45,7 @@ const Header = (props) => {
                                 <DropdownItem href="/monthly-report-doctor">
                                     Monthly Report per Doctor
                                 </DropdownItem>
-                                
+
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
