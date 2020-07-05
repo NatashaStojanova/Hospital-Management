@@ -1,14 +1,12 @@
 package mk.ukim.finki.natashastojanova.hospital_management.web.controllers;
 
-import mk.ukim.finki.natashastojanova.hospital_management.dto.BaseHospitalDto;
-import mk.ukim.finki.natashastojanova.hospital_management.dto.CheckUpDto;
-import mk.ukim.finki.natashastojanova.hospital_management.dto.CheckUpICD_Dto;
-import mk.ukim.finki.natashastojanova.hospital_management.dto.HospitalDto;
+import mk.ukim.finki.natashastojanova.hospital_management.dto.*;
 import mk.ukim.finki.natashastojanova.hospital_management.model.BaseHospital;
 import mk.ukim.finki.natashastojanova.hospital_management.model.Doctor;
 import mk.ukim.finki.natashastojanova.hospital_management.service.BaseHospitalService;
 import mk.ukim.finki.natashastojanova.hospital_management.service.DoctorService;
 import mk.ukim.finki.natashastojanova.hospital_management.service.ICDService;
+import mk.ukim.finki.natashastojanova.hospital_management.service.PatientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -22,10 +20,12 @@ public class CrudController {
 
     private final DoctorService doctorService;
     private final ICDService icdService;
+    private final PatientService patientService;
     private final BaseHospitalService baseHospitalService;
 
-    public CrudController(DoctorService doctorService, ICDService icdService, BaseHospitalService baseHospitalService) {
+    public CrudController(DoctorService doctorService, ICDService icdService, PatientService patientService, BaseHospitalService baseHospitalService) {
         this.icdService = icdService;
+        this.patientService = patientService;
         this.baseHospitalService = baseHospitalService;
         this.doctorService = doctorService;
     }
@@ -60,5 +60,8 @@ public class CrudController {
         return doctorService.addNewCheckUpICD(checkUpICD_dto.getIdCheckUp(), checkUpICD_dto.getIdCode());
     }
 
-
+    @RequestMapping(value = "/new-patient", method = RequestMethod.POST)
+    public Integer addPatient(@RequestBody Patient_Dto patientDto) {
+        return doctorService.addNewPatient(patientDto.getSsn(), patientDto.getName(), patientDto.getSurname(), patientDto.getAddress(), patientDto.getAge(), patientDto.getId_doctor());
+    }
 }

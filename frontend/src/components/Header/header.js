@@ -43,8 +43,8 @@ const Header = (props) => {
                                 <DropdownItem href="/groupByLocation/">
                                     Number of hospitals per Base Hospital
                                 </DropdownItem>
-                                <DropdownItem href="/groupByCode/">
-                                    Top 5 Doctors of the Month
+                                <DropdownItem href="/avgPatientsPerDoctor/">
+                                    Average Patients per Doctor
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem>

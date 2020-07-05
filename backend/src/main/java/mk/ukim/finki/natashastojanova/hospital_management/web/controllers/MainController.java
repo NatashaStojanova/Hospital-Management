@@ -1,5 +1,6 @@
 package mk.ukim.finki.natashastojanova.hospital_management.web.controllers;
 
+import mk.ukim.finki.natashastojanova.hospital_management.dto.AvgPatientsDoctor_Dto;
 import mk.ukim.finki.natashastojanova.hospital_management.dto.Hospital_Location_Dto;
 import mk.ukim.finki.natashastojanova.hospital_management.dto.ICD_Dto;
 import mk.ukim.finki.natashastojanova.hospital_management.model.*;
@@ -31,8 +32,14 @@ public class MainController {
 
     //find Doctors by Hospital
     @GetMapping(value = "/base-hospitals/{baseHospitalId}/hospitals/{hospitalId}")
-    public List<Doctor> findAllDoctorsByHospital(@PathVariable Long baseHospitalId, @PathVariable Long hospitalId) {
-        return doctorService.findAllDoctorsByHospital(hospitalId);
+    public List<GeneralPractitioner> findAllDoctorsByHospital(@PathVariable Long baseHospitalId, @PathVariable Long hospitalId) {
+        return doctorService.findAllGPsByHospital(hospitalId);
+    }
+
+    //find Doctors by Hospital
+    @GetMapping(value = "/base-hospitals/{baseHospitalId}/hospitals/{hospitalId}/medical-specialists")
+    public List<MedicalSpecialist> findAllDoctorsSpecialistsByHospital(@PathVariable Long baseHospitalId, @PathVariable Long hospitalId) {
+        return doctorService.findAllDoctorsSpecialistsByHospital(hospitalId);
     }
 
     //find patients by doctor
@@ -69,10 +76,20 @@ public class MainController {
         return icdService.getAllICDCodes();
     }
 
+    //@RequestMapping(value = "/get-departments", method = RequestMethod.GET)
+    //List<Department> getAllDepartment(){ return departmentService.getAllDepartments();}
+
     @RequestMapping(value = "/groupByLocation", method = RequestMethod.GET)
     Collection<Hospital_Location_Dto> groupByHospitalLocation() {
         return baseHospitalService.groupByLocation();
     }
+
+    //avg
+    @RequestMapping(value = "/avgPatientsPerDoctor", method = RequestMethod.POST)
+    Float avgPatientsPerDoctor(@RequestBody AvgPatientsDoctor_Dto avgPatientsDoctor_dto) {
+        return doctorService.avgPatientsPerDoctor(avgPatientsDoctor_dto.getSsn(), avgPatientsDoctor_dto.getFromDate(), avgPatientsDoctor_dto.getToDate());
+    }
+
 }
 
 

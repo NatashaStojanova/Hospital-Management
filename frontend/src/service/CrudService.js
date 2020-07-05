@@ -32,6 +32,9 @@ const CrudService = {
         return axios.get("/base-hospitals/" + baseHospitalId + "/hospitals/" + hospitalId);
     },
 
+    fetchDoctorsSpecialists: (baseHospitalId, hospitalId) => {
+    return axios.get("/base-hospitals/" + baseHospitalId + "/hospitals/" + hospitalId + "/medical-specialists");
+        },
 
     /**
      * Fetch patients from doctor
@@ -90,6 +93,20 @@ const CrudService = {
     groupByLocation: () => {
         return axios.get("/groupByLocation");
     },
+
+    savePatient: (patient) => {
+        return axios.post("/new-patient", patient);
+    },
+
+    saveGeneralPractitioner: (generalPractitioner) => {
+        return axios.post("/new-general-practitioner", generalPractitioner);
+      },
+    saveDoctor: (doctor) => {
+        return axios.post("/new-doctor", doctor);
+    },
+    avgPatientsPerDoctor: (obj) => {
+       return axios.post("/avgPatientsPerDoctor", obj);
+     },
 };
 
 export default CrudService;

@@ -15,6 +15,9 @@ import AddHospital from "../BaseHospital/AddHospital/addHospital"
 import CheckUp from "../CheckUp/checkUp"
 import Codes from "../Statistics/Codes/codes";
 import HospitalLocation from "../Statistics/HospitalLocation/hospitalLocation";
+import AddNewPatient from "../Doctor/AddNewPatient/addNewPatient"
+import MedicalSpecialist from "../Hospital/MedicalSpecialist/medicalSpecialist";
+import AvgPatientsPerDoctor from "../AvgPatientsPerDoctor/avgPatientsPerDoctor"
 
 class App extends Component {
 
@@ -34,8 +37,8 @@ class App extends Component {
                     <Route path={"/mainHospitals"} exact component={HomePage}/>
                     <Route path={"/base-hospital/:baseHospitalId"} exact component={BaseHospital}/>
                     <Route path={"/base-hospital/:baseHospitalId/hospital/:hospitalId"} exact component={Hospital}/>
-                    <Route path={"/base-hospital/:baseHospitalId/hospital/:hospitalId/doctor/:doctorId"} exact
-                           component={Doctor}/>
+                    <Route path={"/base-hospital/:baseHospitalId/hospital/:hospitalId/medical-specialists"} exact component={MedicalSpecialist}/>
+                    <Route path={"/base-hospital/:baseHospitalId/hospital/:hospitalId/doctor/:doctorId"} exact component={Doctor}/>
                     <Route
                         path={"/base-hospital/:baseHospitalId/hospital/:hospitalId/doctor/:doctorId/patient/:patientId"}
                         exact
@@ -45,9 +48,12 @@ class App extends Component {
                     <Route path={"/createCheckUp"} exact component={CheckUp}/>
                     <Route path={"/groupByCode"} exact component={Codes}/>
                     <Route path={"/groupByLocation"} exact component={HospitalLocation}/>
+                    <Route path={"/doctor/:doctorId/new-patient/"} exact component={AddNewPatient}/>
+                    <Route path={"/avgPatientsPerDoctor"} exact component={AvgPatientsPerDoctor}/>
                     <Footer/>
                 </Router>
             </div>
+
 
         );
     }

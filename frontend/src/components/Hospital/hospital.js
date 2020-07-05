@@ -29,16 +29,6 @@ class Hospital extends Component {
                 console.error(error);
                 alert(error);
             })
-
-        /*let doctors = [];
-        for (let i = 0; i < 50; i++) {
-            let doctor = {id: i, name: "Name_" + i, surname: "Surname_" + i, ssn: i * 1000000}
-            doctors.push(doctor);
-        }
-
-        this.setState({
-            doctors: doctors
-        })*/
     }
 
     render() {
@@ -46,7 +36,18 @@ class Hospital extends Component {
             <div>
                 {this.state.doctors.length > 0 ?
             <div>
-                <h1>Doctors for hospital with ID: {this.state.hospitalId}</h1>
+                <div>
+                <h1>General Practitioners for hospital with ID: {this.state.hospitalId}</h1>
+                    <div align = "left" style={{marginLeft: "20px"}}>
+                        <Link to={"/base-hospital/" + this.state.baseHospitalId +
+                        "/hospital/" + this.state.hospitalId + "/medical-specialists"}
+                              className="btn btn-primary"
+                              baseHospitalId={this.state.baseHospitalId}
+                              hospitalId={this.state.hospitalId}
+                        >Switch to Medical Specialists</Link>
+                    </div>
+               <Link to={"/"} className="btn btn-primary">Add new Doctor</Link></div>
+                <br/>
                 <table className="table tr-history table-striped small">
                     <thead>
                     <tr>

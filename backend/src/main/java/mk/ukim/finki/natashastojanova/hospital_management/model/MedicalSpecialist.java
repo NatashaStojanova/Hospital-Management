@@ -23,7 +23,7 @@ import java.util.List;
 @Table(name = "medical_specialist")
 public class MedicalSpecialist extends Doctor {
 
-    @JsonIgnore
+
     @ManyToOne
     private Department department;
 

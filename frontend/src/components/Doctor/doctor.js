@@ -37,7 +37,15 @@ class Doctor extends Component {
             <div>
                 {this.state.patients.length > 0 ?
             <div>
-                <h1>Patients of Doctor with ID: {this.state.doctorId}</h1>
+                <div>
+                     <h1>Patients of Doctor with ID: {this.state.doctorId}</h1>
+                    <Link to={"/doctor/" + this.state.doctorId + "/new-patient/"}
+                          className="btn btn-primary"
+                          doctorId={this.state.doctorId}>
+                          Add new Patient
+                    </Link>
+                </div>
+                    <br/>
                 <table className="table tr-history table-striped small">
                     <thead>
                     <tr>
